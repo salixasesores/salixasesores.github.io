@@ -10,7 +10,7 @@
         <img style="height:100px" :src="require('./assets/logo.png')">
       </v-toolbar-side-icon>
         <v-spacer></v-spacer>
-        <v-btn class="hidden-sm-and-down" variant="text" color="green">INICIO</v-btn>
+        <v-btn class="hidden-sm-and-down" variant="text" color="green" v-on:click="scrollTo('nosotros')">INICIO</v-btn>
         <v-btn class="hidden-sm-and-down" variant="text" color="green">NOSOTROS</v-btn>
         <v-btn class="hidden-sm-and-down" variant="text" color="green">SERVICIOS</v-btn>
         <v-btn class="hidden-sm-and-down" variant="text" color="green">EQUIPO</v-btn>
@@ -37,7 +37,7 @@
         </v-list>
       </v-navigation-drawer>
 
-      <v-carousel show-arrows="hover" height="350px" cycle="true">
+      <v-carousel show-arrows="hover" height="300px" cycle="true">
         <v-carousel-item
           src="https://d2jx2rerrg6sh3.cloudfront.net/image-handler/ts/20220131080401/ri/750/src/images/Article_Images/ImageForArticle_22064_16436342404173431.jpg"
           cover
@@ -85,44 +85,57 @@
       </v-carousel-item>
       </v-carousel>
       <v-container grid-list-xs>
+        <nosotros id="nosotros"/>
         <v-row class="justify-center">
-          <div style="font-weight: bold; font-size:30px">
+          <div style="font-weight: bold; font-size:30px; margin-top: 0.5%">
             ¿Qué te ofrece Sálix?
           </div>
         </v-row>
         <br>
         <br>
-        <v-row class="justify-space-between">
-          <v-spacer></v-spacer>
-
-          <v-card width="350px" height="350px" color="green">
-            <v-icon>mdi-home</v-icon>
-            <v-card-title>
-              Titulo
-            </v-card-title>
-            <v-card-subtitle>
-              Subtitle
-            </v-card-subtitle>
+        <v-row class="justify-center">
+          <v-card width="350px" height="350px" color="#82ffbf" style="margin: 5%;">
+            <v-img :src="require('./assets/award.png')" cover>
+              <div class="text-center" style="font-size:50px; color: black;">
+                <v-icon>mdi-account-circle</v-icon>
+              </div>
+              <v-card-title class="text-center" style="font-size:30px; color: black;">
+                Trato personalizado
+              </v-card-title>
+              <v-card-text class="text-center" style="color: black;">
+                Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo. 
+                Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo. 
+              </v-card-text>
+            </v-img>
           </v-card>
-          <v-card width="350px" height="350px" color="green">
-            <v-icon>mdi-home</v-icon>
-            <v-card-title>
-              Titulo
-            </v-card-title>
-            <v-card-subtitle>
-              Subtitle
-            </v-card-subtitle>
+          <v-card width="350px" height="350px" color="#c3f7d4" style="margin: 5%;">
+            <v-img :src="require('./assets/team.png')" cover>
+              <div class="text-center" style="font-size:50px; color: black;">
+                <v-icon>mdi-link-variant</v-icon>
+              </div>
+              <v-card-title class="text-center" style="font-size:30px; color: black;">
+                Trato personalizado
+              </v-card-title>
+              <v-card-text class="text-center" style="color: black;">
+                Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo. 
+                Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo. 
+              </v-card-text>
+            </v-img>
           </v-card>
-          <v-card width="350px" height="350px" color="green">
-            <v-icon>mdi-home</v-icon>
-            <v-card-title>
-              Titulo
-            </v-card-title>
-            <v-card-subtitle>
-              Subtitle
-            </v-card-subtitle>
+          <v-card width="350px" height="350px" color="#7ee08c" style="margin: 5%;">
+            <v-img :src="require('./assets/petrib.png')" cover>
+              <div class="text-center" style="font-size:50px; color: black;">
+                <v-icon>mdi-beaker-outline</v-icon>
+              </div>
+              <v-card-title class="text-center" style="font-size:30px; color: black;">
+                Trato personalizado
+              </v-card-title>
+              <v-card-text class="text-center" style="color: black;">
+                Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo. 
+                Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo. 
+              </v-card-text>
+            </v-img>
           </v-card>
-          <v-spacer></v-spacer>
         </v-row>
       </v-container>
     </v-main>
@@ -142,7 +155,7 @@ export default {
         this.drawer = false
       },
     },
-    barItems: [ // Currently not being used as it is hardcoded in the bar item
+    barItems: [ // Currently not being used as it is hardcoded in the bar item. Also needs the icons to be added
       {
         title: "Inicio",
         value: 1
@@ -167,7 +180,12 @@ export default {
         title: "Acceso Clientes",
         value: 6
       }
-    ]
+    ],
   }),
+  methods: {
+      scrollTo(id) {
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth'})
+      }
+    },
 }
 </script>
