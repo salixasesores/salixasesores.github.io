@@ -35,7 +35,7 @@
         <v-btn class="hidden-sm-and-down" variant="outlined" color="teal">ACCESO CLIENTES</v-btn>
         <v-spacer></v-spacer>
         <v-btn icon @click.stop="drawer = !drawer">
-          <v-icon class="hidden-sm-and-up">mdi-menu</v-icon>
+          <v-icon class="hidden-md-and-up">mdi-menu</v-icon>
         </v-btn>
       </v-app-bar>
       <br style="height:100px;">
