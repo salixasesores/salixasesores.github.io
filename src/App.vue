@@ -1,26 +1,6 @@
 <template>
   <v-app>
     <v-main>
-      <v-toolbar 
-        height="120px"
-        color="#f6fcf5"
-      >
-      <v-spacer></v-spacer>
-      <v-toolbar-side-icon>
-        <img style="height:100px" :src="require('./assets/logo.png')">
-      </v-toolbar-side-icon>
-        <v-spacer></v-spacer>
-        <v-btn class="hidden-sm-and-down" variant="text" color="green" v-on:click="scrollTo('nosotros')">INICIO</v-btn>
-        <v-btn class="hidden-sm-and-down" variant="text" color="green">NOSOTROS</v-btn>
-        <v-btn class="hidden-sm-and-down" variant="text" color="green">SERVICIOS</v-btn>
-        <v-btn class="hidden-sm-and-down" variant="text" color="green">EQUIPO</v-btn>
-        <v-btn class="hidden-sm-and-down" variant="text" color="green">CONTACTO</v-btn>
-        <v-btn class="hidden-sm-and-down" variant="outlined" color="teal">ACCESO CLIENTES</v-btn>
-        <v-spacer></v-spacer>
-        <v-btn icon @click.stop="drawer = !drawer">
-          <v-icon class="hidden-sm-and-up">mdi-menu</v-icon>
-        </v-btn>
-      </v-toolbar>
       <v-navigation-drawer
         v-model="drawer"
         location="right"
@@ -28,16 +8,40 @@
       >
         <v-list :items="barItems">
           <v-list-item title="Inicio" value="1" prepend-icon="mdi-home"/>
-          <v-list-item title="Nosotros" value="2" prepend-icon="mdi-flower"/>
-          <v-list-item title="Servicios" value="3" prepend-icon="mdi-star"/>
-          <v-list-item title="Equipo" value="4" prepend-icon="mdi-account-multiple"/>
-          <v-list-item title="Contacto" value="5" prepend-icon="mdi-email"/>
+          <v-list-item title="Nosotros" value="2" v-on:click="scrollTo('nosotros')" prepend-icon="mdi-flower"/>
+          <v-list-item title="Servicios" value="3" v-on:click="scrollTo('servicios')" prepend-icon="mdi-star"/>
+          <v-list-item title="Equipo" value="4" v-on:click="scrollTo('equipo')" prepend-icon="mdi-account-multiple"/>
+          <v-list-item title="Contacto" value="5" v-on:click="scrollTo('contacto')" prepend-icon="mdi-email"/>
           <v-list-item title="Acceso Clientes" value="6" prepend-icon="mdi-account"/>
           <v-list-item title="Cerrar" value="7" prepend-icon="mdi-keyboard-return" @click.stop="drawer = !drawer"/>
         </v-list>
       </v-navigation-drawer>
+      <v-app-bar 
+        height="120px"
+        color="#f6fcf5"
+        hide-on-scroll
+        scroll-target="#scrolling-techniques-4"
+      >
+      <v-spacer></v-spacer>
+      <v-toolbar-side-icon>
+        <img style="height:100px" :src="require('./assets/logo.png')">
+      </v-toolbar-side-icon>
+        <v-spacer></v-spacer>
+        <v-btn class="hidden-sm-and-down" variant="text" color="green">INICIO</v-btn>
+        <v-btn class="hidden-sm-and-down" variant="text" color="green" v-on:click="scrollTo('nosotros')">NOSOTROS</v-btn>
+        <v-btn class="hidden-sm-and-down" variant="text" color="green" v-on:click="scrollTo('servicios')">SERVICIOS</v-btn>
+        <v-btn class="hidden-sm-and-down" variant="text" color="green" v-on:click="scrollTo('equipo')">EQUIPO</v-btn>
+        <v-btn class="hidden-sm-and-down" variant="text" color="green" v-on:click="scrollTo('contacto')">CONTACTO</v-btn>
+        <v-btn class="hidden-sm-and-down" variant="outlined" color="teal">ACCESO CLIENTES</v-btn>
+        <v-spacer></v-spacer>
+        <v-btn icon @click.stop="drawer = !drawer">
+          <v-icon class="hidden-sm-and-up">mdi-menu</v-icon>
+        </v-btn>
+      </v-app-bar>
+      <br style="height:100px;">
+      <br>
 
-      <v-carousel show-arrows="hover" height="300px" cycle="true">
+      <v-carousel show-arrows="hover" height="300px" cycle="true" style="margin-top: 60px">
         <v-carousel-item
           src="https://d2jx2rerrg6sh3.cloudfront.net/image-handler/ts/20220131080401/ri/750/src/images/Article_Images/ImageForArticle_22064_16436342404173431.jpg"
           cover
@@ -84,14 +88,15 @@
           </div>
       </v-carousel-item>
       </v-carousel>
+
+
       <v-container grid-list-xs>
-        <nosotros id="nosotros"/>
         <v-row class="justify-center">
-          <div style="font-weight: bold; font-size:30px; margin-top: 0.5%">
+          <div style="font-weight: bold; font-size:30px; margin-top: 0.5%; position: relative;">
+            <nosotros id="nosotros" style="position:absolute; margin-top: -120px; left: 0"/>
             ¿Qué te ofrece Sálix?
           </div>
         </v-row>
-        <br>
         <br>
         <v-row class="justify-center">
           <v-card width="350px" height="350px" color="#82ffbf" style="margin: 5%;">
@@ -138,6 +143,50 @@
           </v-card>
         </v-row>
       </v-container>
+
+      <v-container grid-list-xs>
+        <v-row class="justify-center">
+          <div style="font-weight: bold; font-size:30px; margin-top: 0.5%; position: relative;">
+            <nosotros id="servicios" style="position:absolute; margin-top: -120px; left: 0"/>
+            Nuestros servicios
+          </div>
+        </v-row>
+
+        <br>
+        <br>
+        <br>
+        <br>
+      </v-container>
+
+      <v-container grid-list-xs>
+        <v-row class="justify-center">
+          <div style="font-weight: bold; font-size:30px; margin-top: 0.5%; position: relative;">
+            <nosotros id="equipo" style="position:absolute; margin-top: -120px; left: 0"/>
+            El equipo de Sálix
+          </div>
+        </v-row>
+
+        <br>
+        <br>
+        <br>
+        <br>
+      </v-container>
+
+
+      <v-container grid-list-xs>
+        <v-row class="justify-center">
+          <div style="font-weight: bold; font-size:30px; margin-top: 0.5%; position: relative;">
+            <nosotros id="contacto" style="position:absolute; margin-top: -120px; left: 0"/>
+            Contacta con nosotros
+          </div>
+        </v-row>
+
+        <br>
+        <br>
+        <br>
+        <br>
+      </v-container>
+
     </v-main>
   </v-app>
 </template>
@@ -184,7 +233,9 @@ export default {
   }),
   methods: {
       scrollTo(id) {
-        document.getElementById(id).scrollIntoView({ behavior: 'smooth'})
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth'});
+        this.drawer = false
+        console.log(this.drawer)
       }
     },
 }
