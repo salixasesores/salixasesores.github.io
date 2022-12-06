@@ -152,6 +152,20 @@
           </div>
         </v-row>
 
+        <v-row class="justify-center">
+          <v-card width="350px" style="margin: 5%;" class="justify-center"> //color="#c3f7d4" 
+            <v-icon style="font-size: 40px; margin: 15px; margin-bottom: 0px;">mdi-home</v-icon>
+            <v-card-title class="text-center">
+              Asesoría Higiénico Sanitaria
+            </v-card-title>
+            <v-card-text>
+              Sálix ofrece asesoría higiénico sanitaria permanente por parte de su equipo, formado por graduados en biología, bioquímica, biomedicina y química. Realiza tareas de consultoría y formación en temas relacionados con: seguridad alimentaria, prevención de legionelosis,  control de aguas de consumo y piscinas.
+            </v-card-text>
+            <v-btn color="success">Saber más</v-btn>
+              
+          </v-card>
+        </v-row>
+
         <br>
         <br>
         <br>
