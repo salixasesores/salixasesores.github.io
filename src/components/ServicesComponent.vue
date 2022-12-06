@@ -2,7 +2,6 @@
 
 <v-container grid-list-xs>
         <v-row class="justify-center">
-          
             <v-card width="350px" min-height="350px" style="margin: 2%; margin-top: 5%" class="justify-center d-flex flex-column" v-for="card in serviceCards" :key="card.id" >
               <v-btn
                 class="ma-2"
@@ -142,7 +141,7 @@ export default {
           intolerancias: {
             value: "intolerancias",
             title: "Cursos sobre intolerancias y alergias alimentarias",
-            text: "Según el RD 126/2015, relativo a la información alimentaria de los alimentos que se presenten sin envasar para la venta al consumidor final y a las colectividades, es obligatoria la formación del personal sobre intolerancias y alergias alimentarias. Biovet ofrece cursos en distintos niveles formativos.",
+            text: "Según el RD 126/2015, relativo a la información alimentaria de los alimentos que se presenten sin envasar para la venta al consumidor final y a las colectividades, es obligatoria la formación del personal sobre intolerancias y alergias alimentarias. Sálix ofrece cursos en distintos niveles formativos.",
             showSubcard: false,
           },
           continuada: {
@@ -163,7 +162,7 @@ export default {
         id: "gestion",
         icon: "mdi-notebook-edit-outline",
         title: "Gestión",
-        text: "Biovet Balear realiza todas aquellas tareas de gestión que requieran sus clientes relacionadas con su ámbito de trabajo y sus necesidades. Como trámites ante la administración o la Gestión de preparación y asistencia en visitas de inspección.",
+        text: "Sálix realiza todas aquellas tareas de gestión que requieran sus clientes relacionadas con su ámbito de trabajo y sus necesidades. Como trámites ante la administración o la Gestión de preparación y asistencia en visitas de inspección.",
         show: false,
         subCards: {
           tramites: {

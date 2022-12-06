@@ -1,101 +1,19 @@
 <template>
   <v-app>
     <v-main>
-      <inicio id="inicio"></inicio>
-      <v-navigation-drawer
-        v-model="drawer"
-        location="right"
-        temporary
-      >
-        <v-list :items="barItems">
-          <v-list-item title="Inicio" value="1" prepend-icon="mdi-home"/>
-          <v-list-item title="Nosotros" value="2" v-on:click="scrollTo('nosotros')" prepend-icon="mdi-flower"/>
-          <v-list-item title="Servicios" value="3" v-on:click="scrollTo('servicios')" prepend-icon="mdi-star"/>
-          <v-list-item title="Equipo" value="4" v-on:click="scrollTo('equipo')" prepend-icon="mdi-account-multiple"/>
-          <v-list-item title="Contacto" value="5" v-on:click="scrollTo('contacto')" prepend-icon="mdi-email"/>
-          <v-list-item title="Acceso Clientes" value="6" prepend-icon="mdi-account"/>
-          <v-list-item title="Cerrar" value="7" prepend-icon="mdi-keyboard-return" @click.stop="drawer = !drawer"/>
-        </v-list>
-      </v-navigation-drawer>
-      <v-app-bar 
-        height="120px"
-        color="#f6fcf5"
-        hide-on-scroll
-        scroll-target="#scrolling-techniques-4"
-      >
-      <v-spacer></v-spacer>
-      <v-toolbar-side-icon>
-        <img style="height:100px" :src="require('./assets/logo.png')">
-      </v-toolbar-side-icon>
-        <v-spacer></v-spacer>
-        <v-btn class="hidden-sm-and-down" variant="text" color="green" v-on:click="scrollTo('inicio')">INICIO</v-btn>
-        <v-btn class="hidden-sm-and-down" variant="text" color="green" v-on:click="scrollTo('nosotros')">NOSOTROS</v-btn>
-        <v-btn class="hidden-sm-and-down" variant="text" color="green" v-on:click="scrollTo('servicios')">SERVICIOS</v-btn>
-        <v-btn class="hidden-sm-and-down" variant="text" color="green" v-on:click="scrollTo('equipo')">EQUIPO</v-btn>
-        <v-btn class="hidden-sm-and-down" variant="text" color="green" v-on:click="scrollTo('contacto')">CONTACTO</v-btn>
-        <v-btn class="hidden-sm-and-down" variant="outlined" color="teal">ACCESO CLIENTES</v-btn>
-        <v-spacer></v-spacer>
-        <v-btn icon @click.stop="drawer = !drawer">
-          <v-icon class="hidden-md-and-up">mdi-menu</v-icon>
-        </v-btn>
-      </v-app-bar>
-      <br style="height:100px;">
-      <br>
-      <v-carousel show-arrows="hover" height="300px" cycle="true" style="margin-top: 60px">
-        <v-carousel-item
-          src="https://d2jx2rerrg6sh3.cloudfront.net/image-handler/ts/20220131080401/ri/750/src/images/Article_Images/ImageForArticle_22064_16436342404173431.jpg"
-          cover
-          gradient="to top right, rgba(220,220,220,.7), rgba(230,255,230,.7)"
-          transparency="0.5"
-        >
-        <div>
-            <div style="margin-left: 5%; margin-right: 5%; margin-top: 10px; font-weight: bold; font-size: 30px;">
-              Asesoría de seguridad alimentaria, control de aguas y formación
-            </div>
-            <div style="margin-left: 5%; margin-right: 5%; font-size: 20px">
-              Servicio integral con toma de muestras, análisis, emisión de informes y asesoría
-            </div>
-          </div>
-      </v-carousel-item>
-      <v-carousel-item
-          src="https://lmg-labmanager.s3.amazonaws.com/assets/articleNo/27442/aImg/50021/lab-quality-assurance-l.jpg"
-          cover
-          gradient="to top right, rgba(220,220,220,.7), rgba(230,255,230,.7)"
-          transparency="0.5"
-        >
-        <div>
-            <div style="margin-left: 5%; margin-right: 5%; margin-top: 10px; font-weight: bold; font-size: 30px;">
-              Aquí va otro texto diferente pero más guay aún
-            </div>
-            <div style="margin-left: 5%; margin-right: 5% font-size: 20px">
-              Con otro subtitulo también bien chulo
-            </div>
-          </div>
-      </v-carousel-item>
-      <v-carousel-item
-          src="https://iq-laboratory.com/wp-content/uploads/2021/04/laboratory-design.jpg"
-          cover
-          gradient="to top right, rgba(220,220,220,.7), rgba(230,255,230,.7)"
-          transparency="0.5"
-        >
-        <div>
-            <div style="margin-left: 5%; margin-right: 5%; margin-top: 10px; font-weight: bold; font-size: 30px;">
-              Aquí el último texto.
-            </div>
-            <div style="margin-left: 5%; margin-right: 5% font-size: 20px">
-              Cada vez mejor
-            </div>
-          </div>
-      </v-carousel-item>
-      </v-carousel>
+      <div id="inicio"></div>
+      
+      <BarComponent />
 
+      <CarousselComponent />
 
       <v-container grid-list-xs>
         <v-row class="justify-center">
           <div style="font-weight: bold; font-size:30px; margin-top: 0.5%; position: relative;">
-            <nosotros id="nosotros" style="position:absolute; margin-top: -120px; left: 0"/>
+            <div id="nosotros" style="position:absolute; margin-top: -120px; left: 0"></div>
             ¿Qué te ofrece Sálix?
           </div>
+          <v-divider color="teal"></v-divider>
         </v-row>
         <UsComponent />
       </v-container>
@@ -103,9 +21,10 @@
       <v-container grid-list-xs>
         <v-row class="justify-center">
           <div style="font-weight: bold; font-size:30px; margin-top: 0.5%; position: relative;">
-            <nosotros id="servicios" style="position:absolute; margin-top: -120px; left: 0"/>
+            <div id="servicios" style="position:absolute; margin-top: -120px; left: 0"></div>
             Nuestros servicios
           </div>
+          <v-divider color="teal"></v-divider>
         </v-row>
         <ServicesComponent />
       </v-container>
@@ -113,213 +32,46 @@
       <v-container grid-list-xs>
         <v-row class="justify-center">
           <div style="font-weight: bold; font-size:30px; margin-top: 0.5%; position: relative;">
-            <nosotros id="equipo" style="position:absolute; margin-top: -120px; left: 0"/>
+            <div id="equipo" style="position:absolute; margin-top: -120px; left: 0"></div>
             El equipo de Sálix
           </div>
+          <v-divider color="teal"></v-divider>
         </v-row>
-
-        <br>
-        <br>
-        <br>
-        <br>
+        <TeamComponent />
       </v-container>
-
 
       <v-container grid-list-xs>
         <v-row class="justify-center">
           <div style="font-weight: bold; font-size:30px; margin-top: 0.5%; position: relative;">
-            <nosotros id="contacto" style="position:absolute; margin-top: -120px; left: 0"/>
+            <div id="contacto" style="position:absolute; margin-top: -120px; left: 0"></div>
             Contacta con nosotros
           </div>
+          <v-divider color="teal"></v-divider>
         </v-row>
-
         <br>
-        <br>
-        <br>
-        <br>
+        <ContactComponent />
       </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
+import BarComponent from './components/BarComponent.vue'
 import UsComponent from './components/UsComponent.vue'
 import ServicesComponent from './components/ServicesComponent.vue'
+import TeamComponent from './components/TeamComponent.vue'
+import ContactComponent from './components/ContactComponent.vue'
+import CarousselComponent from './components/CarousselComponent.vue'
 
 export default {
   components: {
+    BarComponent,
     UsComponent,
     ServicesComponent,
+    TeamComponent,
+    ContactComponent,
+    CarousselComponent,
   },
   name: 'App',
-  data: () => ({
-    drawer: false,
-    group: null,
-    watch: {
-      group () {
-        this.drawer = false
-      },
-    },
-    barItems: [ // Currently not being used as it is hardcoded in the bar item. Also needs the icons to be added
-      {
-        title: "Inicio",
-        value: 1
-      },
-      {
-        title: "Nosotros",
-        value: 2
-      },
-      {
-        title: "Servicios",
-        value: 3
-      },
-      {
-        title: "Equipo",
-        value: 4
-      },
-      {
-        title: "Contacto",
-        value: 5
-      },
-      {
-        title: "Acceso Clientes",
-        value: 6
-      }
-    ],
-    serviceCards: {
-      asesoria: {
-        id: "asesoria",
-        icon: "mdi-handshake-outline",
-        title: "Asesoría Higiénico Sanitaria",
-        text: "Sálix ofrece asesoría higiénico sanitaria permanente por parte de su equipo, formado por graduados en biología, bioquímica, biomedicina y química, especializados en microbiología, tecnología de los alimentos y calidad del agua. Realiza tareas de consultoría y formación en temas relacionados con: seguridad alimentaria, prevención de legionelosis, control de aguas de consumo y piscinas.",
-        show: false,
-        subCards: {
-          spa: {
-            value: "spa",
-            title: "Control de Piscinas y Spas",
-            text:  "Para un correcto control de piscinas y spas, en el RD 742/2013, referente a los criterios sanitarios de las piscinas, queda reflejado que se debe diseñar un programa de autocontrol para cada piscina. En Sálix, diseñamos estos programas, personalizados a cada establecimiento, así como todas las actuaciones de seguimiento y verificación.",
-            showSubcard: false,
-          },
-          aguas: {
-            value: "agua",
-            title: "Control de Aguas de Consumo Humano",
-            text: "Según el RD 140/2003, es obligatorio el control del agua de consumo humano en comedores colectivos. Sálix diseña e implanta sistemas de control de aguas de consumo. ",
-            showSubcard: false,
-          },
-          legionelosis: {
-            value: "legionelosis",
-            title: "Prevención de Legionelosis",
-            text: "Todas aquellas instalaciones con un circuito hídrico, son susceptibles de ser reservorios de Legionella. Para la prevención de legionelosis, la legislación (RD 865/2003), obliga a realizar una evaluación de riesgos para saber si se trata de una instalación de bajo o alto riesgo, así como, a llevar un programa de autocontrol para la prevención de Legionella. Sálix asesora para la realización de estas actuaciones y realiza las verificaciones necesarias. ",
-            showSubcard: false,
-          },
-          seguridadAlimentaria: {
-            value: "seguridadAlimentaria",
-            title: "Seguridad Alimentaria",
-            text: "Sálix, Asesoría Higiénico-Sanitaria realiza el diseño e implantación de programas de autocontrol en seguridad alimentaria. Según indica la legislación (R (CE) 852/2004), todos losmanipulación operadores de empresas alimentarias, desde industrias alimenticias, hostelería, restauración, comedores colectivos en escuelas, residencias, etc, deben tener implantado un sistema de autocontrol en seguridad alimentaria, que se inicia instaurando unos prerrequisitos basados en el APPCC (Análisis de Peligros y Puntos Críticos de Control). Visita de las instalaciones. Durante las visitas, Sálix realiza una auditoría de las condiciones de los establecimientos y de los hábitos de manipulación. Gestión de alérgenos. Desde 2014, por el Reglamento Europeo R 1169/2011 y transcrito en el RD 126/2015, todas las empresas que sirven alimentos sin envasar, y por lo tanto sin etiquetado, deben tener un sistema de gestión de alérgenos para informar al cliente ante cualquier consulta sobre este tema. ",
-            showSubcard: false,
-          },
-        }
-      },
-      laboratorio: {
-        id: "laboratorio",
-        icon: "mdi-flask-round-bottom",
-        title: "Laboratorio de análisis",
-        text: "Sálix, además de asesoría, cuenta con un laboratorio asociado para la realización de análisis microbiológicos de alimentos, análisis de aguas de consumo, de aguas de piscinas, superficies y cosméticos.",
-        show: false,
-        subCards: {
-          ambiental: {
-            value: "ambiental",
-            title: "Análisis de contaminación de ambientes",
-            text:  "Sálix cuenta con un laboratorio asociado para la realización de análisis de control de contaminación de ambientes.",
-            showSubcard: false,
-          },
-          cosmeticos: {
-            value: "cosmeticos",
-            title: "Análisis de cosméticos",
-            text: "Sálix cuenta con un laboratorio asociado para la realización de Análisis de cosméticos para su liberación al mercado",
-            showSubcard: false,
-          },
-          analisisAlimentos: {
-            value: "analisisAlimentos",
-            title: "Análisis de alimentos",
-            text: "Sálix cuenta con un laboratorio para la realización de análisis microbiológicos de alimentos que incluye el análisis para la verificación del APPCC, el análisis según la normativa vigente, análisis de indicadores para la evaluación de la manipulación de alimentos, control de contaminación cruzada de alérgenos alimentarios y análisis para determinar la vida útil de los alimentos.",
-            showSubcard: false,
-          },
-          analisisAgua: {
-            value: "analisisAgua",
-            title: "Análisis de aguas",
-            text: "Sálix cuenta con un laboratorio asociado para la realización de análisis fisicoquímico y microbiológico de aguas de consumo, de aguas de piscinas, de aguas de riego y aguas residuales.",
-            showSubcard: false,
-          },
-          analisisSuperficies: {
-            value: "analisisSuperficies",
-            title: "Análisis de superficies",
-            text: "Sálix cuenta con un laboratorio asociado para la realización de análisis de superficies para verificación del APPCC, control de L+D, control de contaminación cruzada de alérgenos y control de higiéne en la manipulación.",
-            showSubcard: false,
-          },
-        }
-      },
-      formacion: {
-        id: "formacion",
-        icon: "mdi-book",
-        title: "Formación",
-        text: "Sálix, desde sus inicios, tiene una clara vocación formativa, convencidos de que la formación es la base fundamental del trabajo bien hecho. Ofrecemos cursos de formación sobre alimentación saludable, intolerancias y alergias alimentarias, manipulación higiénica de alimentos, mantenimiento de piscinas, formación para SSTT en prevención de Legionella, cursos personalizados para las distintas actividades de la industria, etc. Todos los cursos de formación que realizamos, tienen la posibilidad de ser bonificados.",
-        show: false,
-        subCards: {
-          alimentacionSaludable: {
-            value: "alimentacionSalusable",
-            title: "Cursos sobre alimentación saludable",
-            text:  "La alimentación saludable es un tema que preocupa cada vez más a la población. Hay muchos problemas relacionados con la salud como diabetes, hipertensión, obesidad. Es pues necesaria la formación de los agentes alimentarios en estos temas.",
-            showSubcard: false,
-          },
-          intolerancias: {
-            value: "intolerancias",
-            title: "Cursos sobre intolerancias y alergias alimentarias",
-            text: "Según el RD 126/2015, relativo a la información alimentaria de los alimentos que se presenten sin envasar para la venta al consumidor final y a las colectividades, es obligatoria la formación del personal sobre intolerancias y alergias alimentarias. Biovet ofrece cursos en distintos niveles formativos.",
-            showSubcard: false,
-          },
-          continuada: {
-            value: "continuada",
-            title: "Formación continuada",
-            text: "Es obligado en la industria alimentaria que el personal tenga una formación continuada en relación a la actividad que realiza. Por ello, Sálix ofrece formación para sstt en mantenimiento de piscinas, en prevención de legionella, cursos personalizados para las distintas actividades en la industria y formación e información permanente sobre temas de interés.",
-            showSubcard: false,
-          },
-          manipulacion: {
-            value: "manipulacion",
-            title: "Cursos de manipulación higiénica de alimentos",
-            text: "Sálix realiza cursos de manipulación higiénica de alimentos, emitiendo el certificado correspondiente, como justificante de formación. Se realiza en nuestras propias instalaciones o en los lugares de manipulación y personalizados en función del tipo de empresa.",
-            showSubcard: false,
-          },
-        }
-      },
-      gestion: {
-        id: "gestion",
-        icon: "mdi-notebook-edit-outline",
-        title: "Gestión",
-        text: "Biovet Balear realiza todas aquellas tareas de gestión que requieran sus clientes relacionadas con su ámbito de trabajo y sus necesidades. Como trámites ante la administración o la Gestión de preparación y asistencia en visitas de inspección.",
-        show: false,
-        subCards: {
-          tramites: {
-            value: "tramites",
-            title: "Trámites ante la administración",
-            text:  "Sálix realiza todas aquellas gestiones que requieran sus clientes relacionadas con su ámbito de trabajo y sus necesidades como por ejemplo, trámites ante la administración como son el Alta de actividad, el Cambio de titular o domicilio, alta de piscinas en el SILOE y presentación de memorias técnicas entre otros.",
-            showSubcard: false,
-          },
-          preparacion: {
-            value: "preparacion",
-            title: "Preparación y asistencia en visitas de inspección",
-            text: "Preparación y asistencia en visitas de inspección de APPCC o prerrequsitos, incluyendo la revisión de documentación, auditoría de instalaciones y asistencia durante la inspección.",
-            showSubcard: false,
-          },
-        }
-      },
-    },
-  }),
-  methods: {
-      scrollTo(id) {
-        document.getElementById(id).scrollIntoView({ behavior: 'smooth'});
-        this.drawer = false
-      }
-    },
 }
 </script>

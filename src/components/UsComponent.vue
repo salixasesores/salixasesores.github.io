@@ -1,45 +1,16 @@
 <template>
       <v-container grid-list-xs>
         <v-row class="justify-center">
-          <v-card width="350px" height="350px" color="#82ffbf" style="margin: 5%;">
-            <v-img :src="require('../assets/award.png')" cover>
+          <v-card width="350px" height="350px" :color="card.color" style="margin: 5%;" v-for="card in usCards" :key="card.id">
+            <v-img :src="card.image" cover>
               <div class="text-center" style="font-size:50px; color: black;">
-                <v-icon>mdi-account-circle</v-icon>
+                <v-icon>{{ card.icon }}</v-icon>
               </div>
               <v-card-title class="text-center" style="font-size:30px; color: black;">
-                Trato personalizado
+                {{ card.title }}
               </v-card-title>
               <v-card-text class="text-center" style="color: black;">
-                Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo. 
-                Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo. 
-              </v-card-text>
-            </v-img>
-          </v-card>
-          <v-card width="350px" height="350px" color="#c3f7d4" style="margin: 5%;">
-            <v-img :src="require('../assets/team.png')" cover>
-              <div class="text-center" style="font-size:50px; color: black;">
-                <v-icon>mdi-link-variant</v-icon>
-              </div>
-              <v-card-title class="text-center" style="font-size:30px; color: black;">
-                Trato personalizado
-              </v-card-title>
-              <v-card-text class="text-center" style="color: black;">
-                Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo. 
-                Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo. 
-              </v-card-text>
-            </v-img>
-          </v-card>
-          <v-card width="350px" height="350px" color="#7ee08c" style="margin: 5%;">
-            <v-img :src="require('../assets/petrib.png')" cover>
-              <div class="text-center" style="font-size:50px; color: black;">
-                <v-icon>mdi-beaker-outline</v-icon>
-              </div>
-              <v-card-title class="text-center" style="font-size:30px; color: black;">
-                Trato personalizado
-              </v-card-title>
-              <v-card-text class="text-center" style="color: black;">
-                Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo. 
-                Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo. 
+                {{ card.text }}
               </v-card-text>
             </v-img>
           </v-card>
@@ -51,6 +22,34 @@
 <script>
 export default {
   name: 'UsComponent',
+  data: () => ({
+    usCards: {
+      trato: {
+        id: "trato",
+        color: "#82ffbf",
+        icon: "mdi-account-circle",
+        image: require('../assets/award.png'),
+        title: "Trato personalizado",
+        text: "Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo. Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo."
+      },
+      trato2: {
+        id: "trato2",
+        color: "#c3f7d4",
+        icon: "mdi-link-variant",
+        image: require('../assets/team.png'),
+        title: "Trato personalizado",
+        text: "Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo. Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo."
+      },
+      trato3: {
+        id: "trato3",
+        color: "#7ee08c",
+        icon: "mdi-beaker-outline",
+        image: require('../assets/petrib.png'),
+        title: "Trato personalizado",
+        text: "Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo. Lo que más nos caracteriza en Sálix es la capacidad de ofrecer un servicio personalizado a cada cliente, dedicándole a cada uno de ellos neustro mejor esfuerzo."
+      },
+    },
+  }),
 }
 
 </script>
