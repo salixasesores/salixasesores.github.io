@@ -51,6 +51,12 @@
         <br>
         <ContactComponent />
       </v-container>
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <FooterComponent />
     </v-main>
   </v-app>
 </template>
@@ -62,6 +68,7 @@ import ServicesComponent from './components/ServicesComponent.vue'
 import TeamComponent from './components/TeamComponent.vue'
 import ContactComponent from './components/ContactComponent.vue'
 import CarousselComponent from './components/CarousselComponent.vue'
+import FooterComponent from './components/FooterComponent.vue'
 
 export default {
   components: {
@@ -71,6 +78,7 @@ export default {
     TeamComponent,
     ContactComponent,
     CarousselComponent,
+    FooterComponent,
   },
   name: 'App',
 }
