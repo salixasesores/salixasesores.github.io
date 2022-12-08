@@ -2,7 +2,7 @@
   <div class="home">
     <div id="inicio"></div>
       
-      <BarComponent />
+      <HomeBar />
 
       <CarousselComponent />
 
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import BarComponent from '../components/BarComponent.vue'
+import HomeBar from '../components/HomeBar.vue'
 import UsComponent from '../components/UsComponent.vue'
 import ServicesComponent from '../components/ServicesComponent.vue'
 import TeamComponent from '../components/TeamComponent.vue'
@@ -70,7 +70,7 @@ import FooterComponent from '../components/FooterComponent.vue'
 
 export default {
   components: {
-    BarComponent,
+    HomeBar,
     UsComponent,
     ServicesComponent,
     TeamComponent,

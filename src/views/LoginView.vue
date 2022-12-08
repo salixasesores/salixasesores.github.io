@@ -1,15 +1,15 @@
 <template>
   <div class="login">
-    <BarComponent />
+    <BarClients />
   </div>
 </template>
 
 <script>
-import BarComponent from '../components/BarComponent.vue'
+import BarClients from '../components/BarClients.vue'
 
 export default {
   components: {
-    BarComponent,
+    BarClients,
   },
 }
 </script>
