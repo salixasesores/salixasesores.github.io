@@ -24,7 +24,7 @@
       </v-toolbar-side-icon>
         <v-spacer></v-spacer>
         <v-btn class="hidden-sm-and-down" color="green" v-for="item in barItems" :key="item.title" v-on:click="scrollTo(item.scrollPoint)">{{ item.title }}</v-btn>
-        <v-btn class="hidden-sm-and-down" variant="outlined" color="teal" to="/about">ACCESO CLIENTES</v-btn>
+        <v-btn class="hidden-sm-and-down" variant="outlined" color="teal" to="/login">ACCESO CLIENTES</v-btn>
         <v-spacer></v-spacer>
         <v-btn icon @click.stop="drawer = !drawer">
           <v-icon class="hidden-md-and-up">mdi-menu</v-icon>
