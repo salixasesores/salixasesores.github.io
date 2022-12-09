@@ -2,10 +2,10 @@
   <div class="home">
     <div id="inicio"></div>
       
-      <BarComponent />
+      <HomeBar />
 
       <CarousselComponent />
-
+      <CookiesComponent />
       <v-container grid-list-xs>
         <v-row class="justify-center">
           <div style="font-weight: bold; font-size:30px; margin-top: 0.5%; position: relative;">
@@ -50,7 +50,7 @@
         <br>
         <ContactComponent />
       </v-container>
-      
+    
       <br>
       <br>
       <br>
@@ -60,23 +60,25 @@
 </template>
 
 <script>
-import BarComponent from '../components/BarComponent.vue'
+import HomeBar from '../components/HomeBar.vue'
 import UsComponent from '../components/UsComponent.vue'
 import ServicesComponent from '../components/ServicesComponent.vue'
 import TeamComponent from '../components/TeamComponent.vue'
 import ContactComponent from '../components/ContactComponent.vue'
 import CarousselComponent from '../components/CarousselComponent.vue'
 import FooterComponent from '../components/FooterComponent.vue'
+import CookiesComponent from '../components/CookiesComponent.vue'
 
 export default {
   components: {
-    BarComponent,
+    HomeBar,
     UsComponent,
     ServicesComponent,
     TeamComponent,
     ContactComponent,
     CarousselComponent,
     FooterComponent,
+    CookiesComponent
   },
 }
 </script>
