@@ -26,6 +26,7 @@
           <v-btn class="barBtn hidden-sm-and-down" color="green" to="/">INICIO</v-btn>
           <v-btn class="barBtn hidden-sm-and-down" variant="outlined" color="teal" to="/login">ACCESO CLIENTES</v-btn>
           <v-btn class="barBtn hidden-sm-and-down" variant="outlined" color="blue" to="/signin">REGISTRO</v-btn>
+          <v-btn class="barBtn hidden-sm-and-down" variant="outlined" color="gray" to="/dashboard">DASHBOARD</v-btn>
           <v-spacer></v-spacer>
           <v-spacer></v-spacer>
           <v-btn icon @click.stop="drawer = !drawer">
