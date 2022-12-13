@@ -1,39 +1,15 @@
 <template>
-          <!-- CURRENTLY WORKING BUT THIS CAN BE IMPROVED BY USING A SINGLE NAVIGATION DRAWER AND USE IT'S PROPERTIES DEPEND ON SCREEN SIZE -->
 
   <div class="dashboard">
-    <div id="dashboard"></div>
-
-          <!-- Phone nav drawer -->
-        
+    <div id="dashboard"></div>        
         <v-navigation-drawer
+
         v-model="drawerMobile"
         temporary
         :permanent="drawer"
-        :rail="drawer"
-        
-        >
-        <v-list-item
-          prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
-          title="John Leider"
-          nav
-        >
-        </v-list-item>
-          <v-list v-for="item in barItems" :key="item.title">
-            <v-list-item :title="item.title" :value="item.value" :prepend-icon="item.icon" v-on:click="scrollTo(item.scrollPoint)" :active="false"></v-list-item>
-          </v-list>
-          <v-list>
-            <v-list-item title="Cerrar" value="0" prepend-icon="mdi-keyboard-return" @click.stop="(drawerMobile = !drawerMobile)"/>
-          </v-list>
-        </v-navigation-drawer>
-
-    <!-- Desktop nav drawer -->
-      <v-navigation-drawer
-        v-model="drawer"
-        :rail="rail"
-        permanent
         @click="(rail = false)"
-        class="hidden-sm-and-down"
+        :rail="rail & drawer"
+        
         >
         <v-list-item
           prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
@@ -44,12 +20,17 @@
             <v-btn
               variant="text"
               icon="mdi-chevron-left"
+              class="hidden-sm-and-down"
               @click.stop="rail = !rail"
             ></v-btn>
           </template>
         </v-list-item>
-          <v-list v-for="item in barItems" :key="item.title">
+        <v-list-item title="Menú Principal" value="menu" prepend-icon="mdi-home"></v-list-item>
+          <v-list v-for="item in clientItems" :key="item.title">
             <v-list-item :title="item.title" :value="item.value" :prepend-icon="item.icon" v-on:click="scrollTo(item.scrollPoint)" :active="false"></v-list-item>
+          </v-list>
+          <v-list>
+            <v-list-item title="Cerrar" value="0" prepend-icon="mdi-keyboard-return" @click.stop="(drawerMobile = !drawerMobile)" class="hidden-md-and-up"/>
           </v-list>
         </v-navigation-drawer>
 
@@ -81,8 +62,54 @@
     name: 'BarComponent',
     data: () => ({
       user: "user",
-      drawerMobile: false,
+      drawerMobile: null,
       rail: true,
+      clientItems: {
+        overview: {
+          title: "Menú Principal",
+          icon: "mdi-home",
+        },
+        centers: {
+          title: "Mis centros",
+          icon: "mdi-home",
+        },
+        clients: {
+          title: "Mis clientes",
+          icon: "mdi-home",
+        },
+        contacts: {
+          title: "Mis contactos",
+          icon: "mdi-home",
+        },
+        data: {
+          title: "Mis datos",
+          icon: "mdi-home",
+        },
+        emails: {
+          title: "Emails",
+          icon: "mdi-home",
+        },
+        paidBills: {
+          title: "Facturas pagadas",
+          icon: "mdi-home",
+        },
+        pendingBills: {
+          title: "Facturas pendientes",
+          icon: "mdi-home",
+        },
+        phones: {
+          title: "Teléfonos",
+          icon: "mdi-home",
+        },
+        samplesInProcess: {
+          title: "Muestras en proceso",
+          icon: "mdi-home",
+        },
+        samplesFinished: {
+          title: "Muestras procesadas",
+          icon: "mdi-home",
+        },      
+      }
     }),
     computed: {
       drawer () {
@@ -92,7 +119,10 @@
           return true
         }
       }
-    }
+    },
+    mounted() {
+    this.drawerMobile = this.drawer
+  }
   }
   
   </script>
