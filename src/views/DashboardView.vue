@@ -12,23 +12,97 @@
         
         >
         <v-list-item
-          prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
+        prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
           title="John Leider"
           nav
         >
         <template v-slot:append>
-            <v-btn
-              variant="text"
-              icon="mdi-chevron-left"
-              class="hidden-sm-and-down"
-              @click.stop="rail = !rail"
-            ></v-btn>
-          </template>
-        </v-list-item>
-        <v-list-item title="Menú Principal" value="menu" prepend-icon="mdi-home"></v-list-item>
-          <v-list v-for="item in clientItems" :key="item.title">
-            <v-list-item :title="item.title" :value="item.value" :prepend-icon="item.icon" v-on:click="scrollTo(item.scrollPoint)" :active="false"></v-list-item>
-          </v-list>
+          <v-btn
+          variant="text"
+          icon="mdi-chevron-left"
+          class="hidden-sm-and-down"
+          @click.stop="rail = !rail"
+          ></v-btn>
+        </template>
+      </v-list-item>
+
+      <v-list-item title="Menú Principal" value="menuPrincipal" prepend-icon="mdi-home"></v-list-item>
+
+      <v-list>
+          <v-list-group value="Management">
+            <template v-slot:activator="{ props }">
+              <v-list-item
+              v-bind="props"
+              title="Gestión"
+              prepend-icon="mdi-cog-outline"
+              ></v-list-item>
+            </template>
+            
+            <v-list-item
+            v-for="item in clientManagement"
+            :key="item"
+            :title="item.title"
+            :prepend-icon="item.icon"
+            :value="item.title"
+            ></v-list-item>
+          </v-list-group>
+
+          <v-list-group value="data">
+            <template v-slot:activator="{ props }">
+              <v-list-item
+              v-bind="props"
+              title="Mis Datos"
+              prepend-icon="mdi-account-edit"
+              ></v-list-item>
+            </template>
+            
+            <v-list-item
+            v-for="item in myData"
+            :key="item"
+            :title="item.title"
+            :prepend-icon="item.icon"
+            :value="item.title"
+            ></v-list-item>
+          </v-list-group>
+
+          <v-list-group value="billing">
+            <template v-slot:activator="{ props }">
+              <v-list-item
+              v-bind="props"
+              title="Facturas"
+              prepend-icon="mdi-account-cash"
+              ></v-list-item>
+            </template>
+            
+            <v-list-item
+            v-for="item in billing"
+            :key="item"
+            :title="item.title"
+            :prepend-icon="item.icon"
+            :value="item.title"
+            ></v-list-item>
+          </v-list-group>
+
+          <v-list-group value="samples">
+            <template v-slot:activator="{ props }">
+              <v-list-item
+              v-bind="props"
+              title="Análisis"
+              prepend-icon="mdi-flask"
+              ></v-list-item>
+            </template>
+            
+            <v-list-item
+            v-for="item in samples"
+            :key="item"
+            :title="item.title"
+            :prepend-icon="item.icon"
+            :value="item.title"
+            ></v-list-item>
+          </v-list-group>
+        </v-list>
+        
+
           <v-list>
             <v-list-item title="Cerrar" value="0" prepend-icon="mdi-keyboard-return" @click.stop="(drawerMobile = !drawerMobile)" class="hidden-md-and-up"/>
           </v-list>
@@ -64,51 +138,57 @@
       user: "user",
       drawerMobile: null,
       rail: true,
-      clientItems: {
-        overview: {
-          title: "Menú Principal",
-          icon: "mdi-home",
+      clientManagement: {
+        client: {
+          title: "Clientes", 
+          icon: "mdi-account-circle"
         },
-        centers: {
-          title: "Mis centros",
-          icon: "mdi-home",
+        center: {
+          title: "Centros", 
+          icon: "mdi-account-plus"
         },
-        clients: {
-          title: "Mis clientes",
-          icon: "mdi-home",
+        enterprise: {
+          title: "Empresas", 
+          icon: "mdi-account-star"
+        },
+      },
+      myData: {
+        generalData: {
+          title: "Mis datos",
+          icon: "mdi-account-details"
         },
         contacts: {
-          title: "Mis contactos",
-          icon: "mdi-home",
-        },
-        data: {
-          title: "Mis datos",
-          icon: "mdi-home",
+          title: "Contactos",
+          icon: "mdi-account-group"
         },
         emails: {
           title: "Emails",
-          icon: "mdi-home",
-        },
-        paidBills: {
-          title: "Facturas pagadas",
-          icon: "mdi-home",
-        },
-        pendingBills: {
-          title: "Facturas pendientes",
-          icon: "mdi-home",
+          icon: "mdi-email-plus-outline"
         },
         phones: {
           title: "Teléfonos",
-          icon: "mdi-home",
+          icon: "mdi-cellphone"
         },
+      },
+      billing: {
+        paidBills: {
+          title: "Facturas pagadas",
+          icon: "mdi-cash-check",
+        },
+        pendingBills: {
+          title: "Facturas pendientes",
+          icon: "mdi-cash-lock",
+        },
+      },
+      samples: {
         samplesInProcess: {
-          title: "Muestras en proceso",
-          icon: "mdi-home",
+          title: "Finalizadas",
+          icon: "mdi-flask-empty",
         },
         samplesFinished: {
-          title: "Muestras procesadas",
-          icon: "mdi-home",
-        },      
+          title: "En proceso",
+          icon: "mdi-flask-empty-outline",
+        },     
       }
     }),
     computed: {
