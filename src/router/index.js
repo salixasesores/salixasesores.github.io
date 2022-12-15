@@ -8,17 +8,17 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/login',
+    path: '/login/',
     name: 'login',
     component: () => import('../views/LoginView.vue')
   },
   {
-    path: '/signin',
+    path: '/signin/',
     name: 'signin',
     component: () => import('../views/SigninView.vue')
   },
   {
-    path: '/dashboard',
+    path: '/dashboard/',
     name: 'dashboard',
     component: () => import('../views/DashboardView.vue')
   },
