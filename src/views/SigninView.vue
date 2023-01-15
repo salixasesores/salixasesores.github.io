@@ -83,12 +83,12 @@ export default {
   },
   data() {
        return {
-           name: 'asdf',
-           last_name: 'fdsa',
-           username: 'miguel@probando.com',
-           password: 'Lcdae1335!',
-           email: 'miguel@probando.com',
-           passwordConfirmation: 'Lcdae1335!',
+           name: '',
+           last_name: '',
+           username: '',
+           password: '',
+           email: '',
+           passwordConfirmation: '',
            errors: [],
            correctData: false
        }
