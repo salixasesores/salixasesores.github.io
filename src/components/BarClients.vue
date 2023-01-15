@@ -8,7 +8,7 @@
             <v-list-item :title="item.title" :value="item.value" :prepend-icon="item.icon" v-on:click="scrollTo(item.scrollPoint)" :active="false"></v-list-item>
           </v-list>
           <v-list>
-            <v-list-item title="Acceso Clientes" value="6" prepend-icon="mdi-account"/>
+            <v-list-item title="Inicio" value="6" prepend-icon="mdi-home" to="/"/>
             <v-list-item title="Cerrar" value="7" prepend-icon="mdi-keyboard-return" @click.stop="drawer = !drawer"/>
           </v-list>
         </v-navigation-drawer>
