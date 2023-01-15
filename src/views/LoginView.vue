@@ -3,7 +3,18 @@
     <BarClients />
   </div>
   <v-container>
-    <v-row class="justify-center">
+      <v-row class="justify-center">
+         <v-alert 
+            type="error" 
+            class="elevation-12 justify-center" 
+            style="margin-top: 100px; margin-bottom: -80px;" 
+            max-width="350px" 
+            v-model="correctData"
+            >
+               Los datos introducidos son incorrectos. Por favor, pruebe de nuevo
+            </v-alert>
+      </v-row>  
+     <v-row class="justify-center">
       <v-card class="elevation-12 justify-center" style="margin-top: 100px" width="350px">
          <v-toolbar color="success">
             <v-toolbar-title>Inicio de sesión</v-toolbar-title>
@@ -15,6 +26,7 @@
                   name="login"
                   label="Email"
                   type="text"
+                  v-model="email"
                ></v-text-field>
                <v-text-field
                   id="password"
@@ -22,13 +34,14 @@
                   name="password"
                   label="Contraseña"
                   type="password"
+                  v-model="password"
                ></v-text-field>
             </v-form>
          </v-card-text>
          <v-card-actions>
             <v-btn color="blue" to="/signin">Registro</v-btn>
             <v-spacer></v-spacer>
-            <v-btn color="teal" to="/">Entrar</v-btn>
+            <v-btn color="teal" v-on:click="submitForm()" >Entrar</v-btn>
          </v-card-actions>
       </v-card>
     </v-row>
@@ -37,10 +50,39 @@
 
 <script>
 import BarClients from '../components/BarClients.vue'
+import axios from 'axios'
 
 export default {
   components: {
     BarClients,
   },
+  data() {
+       return {
+           email: '',
+           password: '',
+           correctData: false,
+       }
+   },
+  methods: {
+       submitForm() {
+           const formData = {
+              username: this.email,
+              password: this.password
+           }
+           axios
+               .post('/api/v1/token/login/', formData)
+               .then(response => {
+                   this.$router.push('/dashboard/')
+                   const token = response.data.auth_token
+                   this.$store.commit('setToken', token)
+                   axios.defaults.headers.common['Authorization'] = "Token " + token
+                   localStorage.setItem("token", token)
+                   console.log(response.status)
+               })
+               .catch(
+                  this.correctData = true
+               )
+       }
+   }
 }
 </script>
