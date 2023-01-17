@@ -9,6 +9,9 @@
           </v-list>
           <v-list>
             <v-list-item title="Inicio" value="6" prepend-icon="mdi-home" to="/"/>
+			<v-list-item title="Acceso Clientes" value="6" prepend-icon="mdi-account-check" to="/login" />
+			<v-list-item title="Acceso Empleados" value="6" prepend-icon="mdi-account-key" to="/login-employees" />
+			<v-list-item title="Registro" value="6" prepend-icon="mdi-account-plus" to="/signin" />
             <v-list-item title="Cerrar" value="7" prepend-icon="mdi-keyboard-return" @click.stop="drawer = !drawer"/>
           </v-list>
         </v-navigation-drawer>
@@ -27,6 +30,7 @@
           <v-btn class="barBtn hidden-sm-and-down" variant="outlined" color="teal" to="/login">ACCESO CLIENTES</v-btn>
           <v-btn class="barBtn hidden-sm-and-down" variant="outlined" color="blue" to="/signin">REGISTRO</v-btn>
           <v-btn class="barBtn hidden-sm-and-down" variant="outlined" color="gray" to="/dashboard">DASHBOARD</v-btn>
+          <v-btn class="barBtn hidden-sm-and-down" variant="outlined" color="green" to="/login-employees">ACCESO EMPLEADOS</v-btn>
           <v-spacer></v-spacer>
           <v-spacer></v-spacer>
           <v-btn icon @click.stop="drawer = !drawer">

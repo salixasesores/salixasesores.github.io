@@ -8,7 +8,8 @@
           <v-list-item :title="item.title" :value="item.value" :prepend-icon="item.icon" v-on:click="scrollTo(item.scrollPoint)" :active="false"></v-list-item>
         </v-list>
         <v-list>
-          <v-list-item title="Acceso Clientes" value="6" prepend-icon="mdi-account" to="/login" />
+          <v-list-item title="Acceso Clientes" value="6" prepend-icon="mdi-account-check" to="/login" />
+          <v-list-item title="Acceso Empleados" value="6" prepend-icon="mdi-account-key" to="/login-employees" />
           <v-list-item title="Dashboard" value="7" prepend-icon="mdi-laptop" to="/dashboard" />
           <v-list-item title="Cerrar" value="7" prepend-icon="mdi-keyboard-return" @click.stop="drawer = !drawer"/>
         </v-list>
@@ -27,6 +28,7 @@
         <v-btn class="hidden-sm-and-down" color="green" v-for="item in barItems" :key="item.title" v-on:click="scrollTo(item.scrollPoint)">{{ item.title }}</v-btn>
         <v-btn class="hidden-sm-and-down" variant="outlined" color="teal" to="/login">ACCESO CLIENTES</v-btn>
         <v-btn class="barBtn hidden-sm-and-down" variant="outlined" color="gray" to="/dashboard" style="margin-left:20px;">DASHBOARD</v-btn>
+        <v-btn class="barBtn hidden-sm-and-down" variant="outlined" color="green" to="/login-employees">ACCESO EMPLEADOS</v-btn>
         <v-spacer></v-spacer>
         <v-btn icon @click.stop="drawer = !drawer">
           <v-icon class="hidden-md-and-up">mdi-menu</v-icon>

@@ -5,14 +5,13 @@
   <v-container>
       <v-row class="justify-center">
          <v-alert 
-            id="loginAlert"
             type="error" 
             class="elevation-12 justify-center" 
-            style="margin-top: 100px; margin-bottom: -80px" 
+            style="margin-top: 100px; margin-bottom: -80px;" 
             max-width="350px" 
             v-model="correctData"
             >
-               Los datos introducidos son incorrectos. Por favor, pruebe de nuevo.
+               Los datos introducidos son incorrectos. Por favor, pruebe de nuevo
             </v-alert>
       </v-row>  
      <v-row class="justify-center">
@@ -40,9 +39,8 @@
             </v-form>
          </v-card-text>
          <v-card-actions>
-            <v-btn color="blue" to="/signin">Registro</v-btn>
             <v-spacer></v-spacer>
-            <v-btn color="teal" v-on:click="submitForm()" >Entrar</v-btn>
+            <v-btn color="teal" v-on:click="submitForm()" >Entrar como empleado</v-btn>
          </v-card-actions>
       </v-card>
     </v-row>
@@ -72,16 +70,15 @@ export default {
               password: this.password
            }
            axios
-           .post('/api/v1/token/login/', formData)
-           .then(response => {
-              this.$router.push('/dashboard/')
-              const token = response.data.auth_token
-              this.$store.commit('setToken', token)
-              axios.defaults.headers.common['Authorization'] = "Token " + token
-              localStorage.setItem("token", token)
-            }
-            )
-           .catch(function(error) {
+               .post('/api/v1/token/login/', formData)
+               .then(response => {
+                   this.$router.push('/employees/')
+                   const token = response.data.auth_token
+                   this.$store.commit('setToken', token)
+                   axios.defaults.headers.common['Authorization'] = "Token " + token
+                   localStorage.setItem("token", token)
+               })
+               .catch(function(error) {
                if (error) {
                   self.correctData = true
                }

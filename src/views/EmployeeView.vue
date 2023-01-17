@@ -57,7 +57,7 @@
             </template>
             
             <v-list-item
-            v-for="item in myData"
+            v-for="item in customersData"
             :key="item"
             :title="item.title"
             :prepend-icon="item.icon"
@@ -98,16 +98,29 @@
             :title="item.title"
             :prepend-icon="item.icon"
             :value="item.title"
-            ></v-list-item>
+            ></v-list-item>            
           </v-list-group>
-        </v-list>
-        <v-list-item
-            title="Cerrar sesión"
-            prepend-icon="mdi-exit-to-app"
-            to="/logout"
-          >
 
-          </v-list-item>
+          <v-list-group value="employee">
+            <template v-slot:activator="{ props }">
+              <v-list-item
+              v-bind="props"
+              title="Empleado"
+              prepend-icon="mdi-puzzle"
+              ></v-list-item>
+            </template>
+            
+            <v-list-item
+            v-for="item in employee"
+            :key="item"
+            :title="item.title"
+            :prepend-icon="item.icon"
+            :value="item.title"
+            ></v-list-item>            
+          </v-list-group>
+
+        </v-list>
+        
 
           <v-list>
             <v-list-item title="Cerrar" value="0" prepend-icon="mdi-keyboard-return" @click.stop="(drawerMobile = !drawerMobile)" class="hidden-md-and-up"/>
@@ -139,13 +152,18 @@
   
   <script>
   import axios from 'axios'
+
   export default {
-    name: 'BarComponent',
+    name: 'EmployeeComponent',
     data: () => ({
       user: "user",
       drawerMobile: null,
       rail: true,
       clientManagement: {
+        users: {
+          title: "Usuarios",
+          icon: "mdi-account-box"
+        },
         client: {
           title: "Clientes", 
           icon: "mdi-account-circle"
@@ -159,11 +177,7 @@
           icon: "mdi-account-star"
         },
       },
-      myData: {
-        generalData: {
-          title: "Mis datos",
-          icon: "mdi-account-details"
-        },
+      customersData: {
         contacts: {
           title: "Contactos",
           icon: "mdi-account-group"
@@ -178,6 +192,10 @@
         },
       },
       billing: {
+        allBills: {
+          title: "Todas las facturas",
+          icon: "mdi-cash"
+        },
         paidBills: {
           title: "Facturas pagadas",
           icon: "mdi-cash-check",
@@ -188,6 +206,10 @@
         },
       },
       samples: {
+        allSamples: {
+          title: "Todas las muestras ",
+          icon: "mdi-flask"
+        },
         samplesInProcess: {
           title: "Finalizadas",
           icon: "mdi-flask-empty",
@@ -195,8 +217,15 @@
         samplesFinished: {
           title: "En proceso",
           icon: "mdi-flask-empty-outline",
-        },     
+        },    
+      },
+      employee: {
+        employeeData: {
+          title: "Mis datos",
+          icon: "mdi-folder"
+        }
       }
+
     }),
     computed: {
       drawer () {
@@ -209,23 +238,22 @@
     },
     mounted() {
     this.drawerMobile = this.drawer
-  },
-  beforeCreate() {
+    },
+    beforeCreate() {
       const self = this
       axios
-      .get('/users/current_user/', {
+      .get('/users/current_employee/', {
         headers: {
           'Authorization': 'Token ' + localStorage["token"]
         }
       })
       .catch(function(error) {
                if (error) {
-                  self.$router.push('/login/')
+                  self.$router.push('/dashboard/')
                   localStorage.setItem("token", '')
                }
             }
             )
     }
   }
-  
   </script>

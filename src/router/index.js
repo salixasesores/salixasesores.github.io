@@ -13,6 +13,11 @@ const routes = [
     component: () => import('../views/LoginView.vue')
   },
   {
+    path: '/logout/',
+    name: 'logout',
+    component: () => import('../views/LogoutView.vue')
+  },
+  {
     path: '/signin/',
     name: 'signin',
     component: () => import('../views/SigninView.vue')
@@ -23,6 +28,16 @@ const routes = [
     component: () => import('../views/DashboardView.vue')
   },
   {
+    path: '/login-employees/',
+    name: 'login-employees',
+    component: () => import('../views/LoginEmployees.vue')
+  },
+  {
+    path: '/employees/',
+    name: 'employees',
+    component: () => import('../views/EmployeeView.vue')
+  },
+  {
     path: '/test/',
     name: 'test',
     component: () => import('../views/CompTestView.vue')
@@ -31,7 +46,8 @@ const routes = [
     path: '/test2/',
     name: 'test2',
     component: () => import('../views/TestingView.vue')
-  }
+  },
+
 ]
 
 const router = createRouter({
