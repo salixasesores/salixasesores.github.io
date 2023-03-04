@@ -36,8 +36,8 @@ export default {
             axios
                 .post('/api/v1/users/', formData)
                 .then(response => {
-                    this.$router.push('/dashboard/')
                     console.log(response)
+                    this.$router.push('/dashboard/')
                 })
         }
     }

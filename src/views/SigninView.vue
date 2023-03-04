@@ -157,6 +157,26 @@ export default {
             })
          }
       }
+   },
+   beforeCreate() {
+      if (localStorage['token']) {
+         const self = this
+      axios
+      .get('/users/current_employee/', {
+        headers: {
+          'Authorization': 'Token ' + localStorage["token"]
+        }
+      })
+      .then(
+         self.$router.push('/employees/')
+        )
+      .catch(function(error) {
+               if (error) {
+                  self.$router.push('/dashboard/')
+               }
+            }
+            )
+      }
    }
 }
 </script>
