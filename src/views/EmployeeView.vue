@@ -13,7 +13,7 @@
         >
         <v-list-item
         prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
-          title="John Leider"
+          :title="user"
           nav
         >
         <template v-slot:append>
@@ -44,6 +44,7 @@
             :title="item.title"
             :prepend-icon="item.icon"
             :value="item.title"
+            :to="item.to"
             ></v-list-item>
           </v-list-group>
 
@@ -51,7 +52,7 @@
             <template v-slot:activator="{ props }">
               <v-list-item
               v-bind="props"
-              title="Mis Datos"
+              title="Datos Clientes"
               prepend-icon="mdi-account-edit"
               ></v-list-item>
             </template>
@@ -120,7 +121,19 @@
           </v-list-group>
 
         </v-list>
-        
+        <v-list-item
+            title="Entrar como cliente"
+            prepend-icon="mdi-account-box"
+            to="/dashboard"
+          >
+          </v-list-item>
+          <v-list-item
+            title="Cerrar sesión"
+            prepend-icon="mdi-exit-to-app"
+            to="/logout"
+          >
+
+          </v-list-item>
 
           <v-list>
             <v-list-item title="Cerrar" value="0" prepend-icon="mdi-keyboard-return" @click.stop="(drawerMobile = !drawerMobile)" class="hidden-md-and-up"/>
@@ -148,6 +161,7 @@
 <br>
 
       </div>
+
   </template>
   
   <script>
@@ -156,76 +170,94 @@
   export default {
     name: 'EmployeeComponent',
     data: () => ({
-      user: "user",
+      user: "employee",
       drawerMobile: null,
       rail: true,
       clientManagement: {
         users: {
           title: "Usuarios",
-          icon: "mdi-account-box"
+          icon: "mdi-account-box",
+          to: '/employees/users',
         },
         client: {
           title: "Clientes", 
-          icon: "mdi-account-circle"
+          icon: "mdi-account-circle",
+          to: '/employees/clients',
         },
         center: {
           title: "Centros", 
-          icon: "mdi-account-plus"
+          icon: "mdi-account-plus",
+          to: '/employees/centers',
         },
         enterprise: {
           title: "Empresas", 
-          icon: "mdi-account-star"
+          icon: "mdi-account-star",
+          to: '/employees/enterprises',
         },
       },
       customersData: {
         contacts: {
           title: "Contactos",
-          icon: "mdi-account-group"
+          icon: "mdi-account-group",
+          to: '',
         },
         emails: {
           title: "Emails",
-          icon: "mdi-email-plus-outline"
+          icon: "mdi-email-plus-outline",
+          to: '',
         },
         phones: {
           title: "Teléfonos",
-          icon: "mdi-cellphone"
+          icon: "mdi-cellphone",
+          to: '',
         },
+        addresses: {
+          title: "Direcciones",
+          icon: "mdi-store",
+          to: ''
+        }
       },
       billing: {
         allBills: {
           title: "Todas las facturas",
-          icon: "mdi-cash"
+          icon: "mdi-cash",
+          to: '',
         },
         paidBills: {
           title: "Facturas pagadas",
           icon: "mdi-cash-check",
+          to: '',
         },
         pendingBills: {
           title: "Facturas pendientes",
           icon: "mdi-cash-lock",
+          to: '',
         },
       },
       samples: {
         allSamples: {
           title: "Todas las muestras ",
-          icon: "mdi-flask"
+          icon: "mdi-flask",
+          to: '',
         },
         samplesInProcess: {
           title: "Finalizadas",
           icon: "mdi-flask-empty",
+          to: '',
         },
         samplesFinished: {
           title: "En proceso",
           icon: "mdi-flask-empty-outline",
+          to: '',
         },    
       },
       employee: {
         employeeData: {
-          title: "Mis datos",
-          icon: "mdi-folder"
+          title: "Datos clientes",
+          icon: "mdi-folder",
+          to: '',
         }
-      }
-
+      },
     }),
     computed: {
       drawer () {
@@ -240,6 +272,9 @@
     this.drawerMobile = this.drawer
     },
     beforeCreate() {
+      if (!localStorage["token"]) {
+        this.$router.push('/login/')
+      }
       const self = this
       axios
       .get('/users/current_employee/', {
@@ -247,6 +282,10 @@
           'Authorization': 'Token ' + localStorage["token"]
         }
       })
+      .then(async response => {
+          let userData = response.data[0]
+          this.user = [userData["name"], userData["last_name"]].join(" ")
+        })
       .catch(function(error) {
                if (error) {
                   self.$router.push('/dashboard/')

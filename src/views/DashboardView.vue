@@ -13,7 +13,7 @@
         >
         <v-list-item
         prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
-          title="John Leider"
+          :title="user"
           nav
         >
         <template v-slot:append>
@@ -211,6 +211,9 @@
     this.drawerMobile = this.drawer
   },
   beforeCreate() {
+      if (!localStorage["token"]) {
+        this.$router.push('/login/')
+      }
       const self = this
       axios
       .get('/users/current_user/', {
@@ -218,6 +221,10 @@
           'Authorization': 'Token ' + localStorage["token"]
         }
       })
+      .then(async response => {
+          let userData = response.data[0]
+          this.user = [userData["name"], userData["last_name"]].join(" ")
+        })
       .catch(function(error) {
                if (error) {
                   self.$router.push('/login/')
