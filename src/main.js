@@ -6,7 +6,7 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 
-axios.defaults.baseURL = "http://87.106.124.3:8000"
+axios.defaults.baseURL = "https://asesoressalix.es"
 
 loadFonts()
 
