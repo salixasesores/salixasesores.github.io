@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunksalix"]=self["webpackChunksalix"]||[]).push([[649],{3649:function(e,t,n){n.r(t),n.d(t,{default:function(){return i}});var r=n(3396);function o(e,t,n,o,u,a){return(0,r.wg)(),(0,r.iD)("div")}n(7658);var u={name:"logoutComponent",beforeCreate(){localStorage.setItem("token",""),this.$router.push("/")}},a=n(89);const s=(0,a.Z)(u,[["render",o]]);var i=s}}]);
+//# sourceMappingURL=649.5c0cf845.js.map
